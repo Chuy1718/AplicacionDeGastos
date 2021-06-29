@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi aplicacion para gastos</title>
+</head>
+<body>
+    <h1>Mi economia</h1>
+<form id="transactionForm">
+    <div class="form">
+    Tipo de transaccion
+    <label for="ingreso">Ingreso</label>
+    <input id="ingreso" type="radio" name="tsSelector" value="Ingreso">
+    <label for="egreso">Egreso</label>
+    <input id="egreso" type="radio" name="tsSelector" value="Egreso">
+    </div>
+    <div class="form">
+    <label for="transactionDescription">Descripcion</label>
+    <input id="transactionDescription" name="transactionDescription">
+    </div>
+    <div class="form">
+    <label  for="transactionAmmount">Monto</label>
+    <input id="transactionAmmount" name="transactionAmmount"  type="number">
+    </div>
+    <div class="form">
+    <label for="transactionCategory">Categoria</label>
+    <input id="transactionCategory" name="transactionCategory">
+    </div>
+    <div class="form">
+  <button id="envio">Añadir</button>
+</div>
+</form>
+<div class="Format">
+    <table id="transactionTable">
+        <tr>
+            <th>
+                Tipo
+            </th>
+            <th>
+                Descripcion
+            </th>
+            <th>
+                Monto
+            </th>
+            <th>
+                Categoria
+            </th>
+        </tr>
+    <td>
+        Ingreso
+    </td>
+    <td>
+        Sueldo
+    </td>
+    <td>
+        1000
+    </td>
+    <td>
+        Trabajo
+    </td>
+    </table>
+</div>
+
+<script>
+    const form = document.getElementById("transactionForm");
+
+form.addEventListener("submit", function(event){
+   // console.log(event);
+   // alert("Se detecto envio de formulario")
+    event.preventDefault();
+    let transactionFormData = new FormData(form);
+    insertRowInTransactionTable(transactionFormData)
+})
+
+function insertRowInTransactionTable(transactionFormData){
+    let transactionTableRef = document.getElementById("transactionTable");
+    let newTransaccionRowRef = transactionTableRef.insertRow(-1);
+
+    let newTypeCell = newTransaccionRowRef.insertCell(0);
+    newTypeCell.textContent = transactionFormData.get("tsSelector")
+
+   newTypeCell = newTransaccionRowRef.insertCell(1);
+    newTypeCell.textContent = transactionFormData.get("transactionDescription")
+
+    newTypeCell = newTransaccionRowRef.insertCell(2);
+    newTypeCell.textContent = transactionFormData.get("transactionAmmount")
+
+    newTypeCell = newTransaccionRowRef.insertCell(3);
+    newTypeCell.textContent = transactionFormData.get("transactionCategory")
+}
+
+   
+
+</script>
+
+
+<style>
+h1{
+    text-align: center;
+}
+form{
+    text-align: center;
+}
+.form{
+    background-color:wheat;
+    padding-bottom:20px;
+}
+#envio{
+font-size:23px;
+}
+td,th{
+    text-align: center;
+    padding: 10px;
+    border: solid red 1px;
+}
+.Format table{
+ margin: 0 auto;
+}
+</style>
+</body>
+</html>
