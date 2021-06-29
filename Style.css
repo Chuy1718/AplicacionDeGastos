@@ -1,0 +1,21 @@
+h1{
+    text-align: center;
+}
+form{
+    text-align: center;
+}
+.form{
+    background-color:wheat;
+    padding-bottom:20px;
+}
+#envio{
+font-size:23px;
+}
+td,th{
+    text-align: center;
+    padding: 10px;
+    border: solid red 1px;
+}
+.Format table{
+ margin: 0 auto;
+}

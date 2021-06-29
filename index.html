@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Mi aplicacion para gastos</title>
+    <link rel="stylesheet" type="text/css" href="Style/Style.css">
+
 </head>
+
 <body>
     <h1>Mi economia</h1>
 <form id="transactionForm">
@@ -60,62 +63,6 @@
     </td>
     </table>
 </div>
-
-<script>
-    const form = document.getElementById("transactionForm");
-
-form.addEventListener("submit", function(event){
-   // console.log(event);
-   // alert("Se detecto envio de formulario")
-    event.preventDefault();
-    let transactionFormData = new FormData(form);
-    insertRowInTransactionTable(transactionFormData)
-})
-
-function insertRowInTransactionTable(transactionFormData){
-    let transactionTableRef = document.getElementById("transactionTable");
-    let newTransaccionRowRef = transactionTableRef.insertRow(-1);
-
-    let newTypeCell = newTransaccionRowRef.insertCell(0);
-    newTypeCell.textContent = transactionFormData.get("tsSelector")
-
-   newTypeCell = newTransaccionRowRef.insertCell(1);
-    newTypeCell.textContent = transactionFormData.get("transactionDescription")
-
-    newTypeCell = newTransaccionRowRef.insertCell(2);
-    newTypeCell.textContent = transactionFormData.get("transactionAmmount")
-
-    newTypeCell = newTransaccionRowRef.insertCell(3);
-    newTypeCell.textContent = transactionFormData.get("transactionCategory")
-}
-
-   
-
-</script>
-
-
-<style>
-h1{
-    text-align: center;
-}
-form{
-    text-align: center;
-}
-.form{
-    background-color:wheat;
-    padding-bottom:20px;
-}
-#envio{
-font-size:23px;
-}
-td,th{
-    text-align: center;
-    padding: 10px;
-    border: solid red 1px;
-}
-.Format table{
- margin: 0 auto;
-}
-</style>
 </body>
+<script src="Js/index.js"></script>
 </html>
